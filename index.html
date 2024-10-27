@@ -1,0 +1,28 @@
+let points = 0;
+let clickValue = 1; // Pontos por clique
+const pointsDisplay = document.getElementById('points');
+const clickButton = document.getElementById('click-button');
+const upgradeBtn = document.getElementById('upgrade-btn');
+
+clickButton.addEventListener('click', () => {
+    points += clickValue;
+    pointsDisplay.textContent = points;
+    checkUpgrade();
+});
+
+upgradeBtn.addEventListener('click', () => {
+    if (points >= 10) {
+        points -= 10;
+        clickValue += 1; // Aumenta a quantidade de pontos por clique
+        pointsDisplay.textContent = points;
+        checkUpgrade();
+    }
+});
+
+function checkUpgrade() {
+    if (points >= 10) {
+        upgradeBtn.disabled = false;
+    } else {
+        upgradeBtn.disabled = true;
+    }
+}
